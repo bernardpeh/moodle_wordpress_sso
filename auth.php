@@ -34,10 +34,10 @@ class auth_plugin_wordpress_sso extends auth_plugin_base {
      * @return bool Authentication success or failure.
      */
     function user_login ($username, $password) {
-        global $CFG, $DB;
+        // global $CFG, $DB;
         $postdata = "log=". $username ."&pwd=". $password ."&wp-submit=Log%20In&testcookie=1";
         $ch = curl_init();
-        curl_setopt ($ch, CURLOPT_URL, $url);
+        curl_setopt ($ch, CURLOPT_URL, $this->config->wordpress_url);
         curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt ($ch, CURLOPT_TIMEOUT, 60);
         curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, 1);
